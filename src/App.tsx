@@ -24,14 +24,14 @@ export function App() {
       {/* Intro Preloader Animation Screen */}
       <IntroAnimation onComplete={() => console.log('Intro animation finished')} />
 
-      {/* GSAP TargetCursor in Coffee Brown */}
+      {/* GSAP TargetCursor in White */}
       <TargetCursor 
         spinDuration={2.5}
         hideDefaultCursor
         parallaxOn
         hoverDuration={0.2}
-        cursorColor="#200f07"
-        cursorColorOnTarget="#c2410c"
+        cursorColor="#ffffff"
+        cursorColorOnTarget="#ffffff"
         targetSelector="a, button, .cursor-target"
       />
 

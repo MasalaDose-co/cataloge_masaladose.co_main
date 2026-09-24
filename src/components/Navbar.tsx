@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useScrollProgress } from '../hooks/useScrollProgress';
 
@@ -9,6 +10,13 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   const { isScrolled } = useScrollProgress();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   const navLinks = [
     { name: 'What We Do', href: '#what-we-do' },
@@ -27,13 +35,20 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-        isScrolled
-          ? 'solid-mustard-navbar py-4 shadow-md'
-          : 'bg-[#f3b72b] py-6 border-b-2 border-[#200f07]/30'
-      }`}
-    >
+    <>
+      {/* Top Reading Scroll Progress Bar */}
+      <motion.div
+        style={{ scaleX }}
+        className="fixed top-0 left-0 right-0 h-1 bg-[#c2410c] origin-left z-50 pointer-events-none"
+      />
+
+      <header
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+          isScrolled
+            ? 'solid-mustard-navbar py-4 shadow-md'
+            : 'bg-[#f3b72b] py-6 border-b-2 border-[#200f07]/30'
+        }`}
+      >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
         {/* Left: Brand Logo in Lowercase masaladose.co */}
         <a
@@ -120,5 +135,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact }) => {
         </div>
       )}
     </header>
+    </>
   );
 };

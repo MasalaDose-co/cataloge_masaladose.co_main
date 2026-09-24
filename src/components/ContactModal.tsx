@@ -13,7 +13,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
     name: '',
     email: '',
     company: '',
-    preferredStage: 'not-sure',
+    preferredStage: '',
     whatToBuild: '',
     message: ''
   });
@@ -56,7 +56,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
       name: '',
       email: '',
       company: '',
-      preferredStage: 'not-sure',
+      preferredStage: '',
       whatToBuild: '',
       message: ''
     });
@@ -123,7 +123,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 <input
                   type="text"
                   required
-                  placeholder="e.g. Alex Morgan"
+                  placeholder=""
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm focus:outline-none focus:border-[#e5aa30] focus:ring-1 focus:ring-[#e5aa30] transition-colors"
@@ -137,7 +137,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 <input
                   type="email"
                   required
-                  placeholder="alex@company.com"
+                  placeholder=""
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm focus:outline-none focus:border-[#e5aa30] focus:ring-1 focus:ring-[#e5aa30] transition-colors"
@@ -152,7 +152,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g. Acme Corp / Stealth Startup"
+                  placeholder=""
                   value={formData.company}
                   onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                   className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm focus:outline-none focus:border-[#e5aa30] focus:ring-1 focus:ring-[#e5aa30] transition-colors"
@@ -168,10 +168,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
                   onChange={(e) => setFormData({ ...formData, preferredStage: e.target.value as any })}
                   className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm focus:outline-none focus:border-[#e5aa30] focus:ring-1 focus:ring-[#e5aa30] transition-colors"
                 >
-                  <option value="stage-01">Stage 01 — Presence (Single-page)</option>
-                  <option value="stage-02">Stage 02 — Growth (Multi-page & CMS)</option>
-                  <option value="stage-03">Stage 03 — Scale (Full SaaS & AI Platform)</option>
-                  <option value="not-sure">Not sure yet (Guidance needed)</option>
+                  <option value="" disabled hidden>Select stage</option>
+                  <option value="stage-01">Stage 01</option>
+                  <option value="stage-02">Stage 02</option>
+                  <option value="stage-03">Stage 03</option>
+                  <option value="not-sure">Not sure yet</option>
                 </select>
               </div>
             </div>
@@ -183,7 +184,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) =
               <textarea
                 required
                 rows={3}
-                placeholder="Briefly describe your product vision, features, or current business challenge..."
+                placeholder=""
                 value={formData.message}
                 onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                 className="w-full px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 text-sm focus:outline-none focus:border-[#e5aa30] focus:ring-1 focus:ring-[#e5aa30] transition-colors resize-none"

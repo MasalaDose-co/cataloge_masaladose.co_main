@@ -18,6 +18,10 @@
     font-weight: 700;
   }
 
+  input, textarea, select {
+    caret-color: #ffffff;
+  }
+
   h1, h2, h3, .font-display {
     font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
   }

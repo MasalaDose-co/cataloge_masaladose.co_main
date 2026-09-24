@@ -10,7 +10,13 @@ export const WhatWeDo: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Left Column: Heading & Description */}
-        <div className="lg:col-span-5 sticky top-32">
+        <motion.div 
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7 }}
+          className="lg:col-span-5 sticky top-32"
+        >
           <div className="text-xs font-mono uppercase tracking-widest text-[#c2410c] font-black mb-4">
             CORE PHILOSOPHY
           </div>
@@ -24,7 +30,7 @@ export const WhatWeDo: React.FC = () => {
             <span className="text-[#c2410c] font-black">// METAPHOR</span><br />
             Just like a kitchen transforms raw ingredients into a crafted dish, we turn raw ideas into high-performing digital systems.
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Typographic Capabilities List */}
         <div className="lg:col-span-7 flex flex-col divide-y-2 divide-[#200f07]">
@@ -35,6 +41,10 @@ export const WhatWeDo: React.FC = () => {
             return (
               <motion.div
                 key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={`py-6 sm:py-8 transition-all duration-300 cursor-pointer relative group ${

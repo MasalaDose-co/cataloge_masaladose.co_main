@@ -41,7 +41,7 @@ export interface ContactFormData {
   name: string;
   email: string;
   company: string;
-  preferredStage: 'stage-01' | 'stage-02' | 'stage-03' | 'not-sure';
+  preferredStage: 'stage-01' | 'stage-02' | 'stage-03' | 'not-sure' | '';
   whatToBuild: string;
   message: string;
 }
